@@ -1,5 +1,8 @@
+#![allow(dead_code)]
+#![allow(unused_variables)]
 mod handlers;
 mod models;
+mod utils;
 
 use actix_web::{web, App, HttpServer};
 use models::Task;
