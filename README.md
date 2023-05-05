@@ -6,7 +6,7 @@ Build Rust App - TODO (A sophisticated one)
 
 ### Features
 
-- [ ] TODO w/o DB
+- [x] TODO w/o DB
 
   > The TODO struct is wrapped with a Mutex to make it thread-safe. The Mutex is a mutual exclusion lock, which allows only one thread to access the data at a time. This is necessary because Rust doesn't know at compile time which thread will call the code. If we don't use Mutex, Rust will complain that the code is not thread-safe.
   >
