@@ -27,13 +27,13 @@ pub async fn update_task(
     task_map: web::Data<Mutex<HashMap<u64, Task>>>,
 ) -> impl Responder {
     let id = path.into_inner();
-    let mut map: std::sync::MutexGuard<HashMap<u64, Task>> = task_map.lock().unwrap();
-    if map.contains_key(&id) {
-        map.insert(id, task.clone());
-        HttpResponse::Ok().json(id)
-    } else {
-        HttpResponse::NotFound().finish()
-    }
+    let mut map = task_map.lock().unwrap();
+    map.insert(id, task.clone());
+    let response = map
+        .get(&id)
+        .map(|_| HttpResponse::Ok().json(id))
+        .unwrap_or_else(|| HttpResponse::NotFound().finish());
+    response
 }
 
 // Delete task
