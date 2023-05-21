@@ -32,8 +32,15 @@ Build Rust App - TODO (A sophisticated one)
 ```sh
 $ cargo add actix-web
 $ cargo add serde --features derive
-$ cargo add seder_json
 $ cargo add serde_json
+# We need to add r2d2 for connection pooling and diesel for ORM support for postgres database.
+$ cargo add diesel chrono --features "diesel/postgres diesel/r2d2"
+# install diesel cli
+$ cargo install diesel_cli --no-default-features --features "postgres"
+# copy DB schema into rust structs
+$ cargo install diesel_cli_ext
+# install dotenv for environment variables
+$ cargo add dotenv
 ```
 
 ## Usage
