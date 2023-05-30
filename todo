@@ -1,0 +1,2 @@
+- [ ] add `response` struct from https://codevoweb.com/build-a-simple-api-with-rust-and-actix-web/
+- [ ] add `middleware` & also modify some codebase from repo: https://github.com/amanPradhan05/task-manager-api-actix-

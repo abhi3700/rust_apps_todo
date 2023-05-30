@@ -23,6 +23,9 @@ async fn main() -> std::io::Result<()> {
     std::env::set_var("RUST_LOG", "debug");
     env_logger::init();
 
+    let db_url = std::env::var("DATABASE_URL").expect("DATABASE_URL must be set");
+    let bind_address = std::env::var("BIND_ADDRESS").expect("BIND_ADDRESS must be set");
+
     let task_map: web::Data<Mutex<HashMap<u64, Task>>> =
         web::Data::new(Mutex::new(HashMap::<u64, Task>::new()));
 
@@ -41,7 +44,7 @@ async fn main() -> std::io::Result<()> {
                     .route(web::delete().to(delete_task)),
             )
     })
-    .bind("127.0.0.1:8080")?
+    .bind(bind_address)?
     .run()
     .await
 }
